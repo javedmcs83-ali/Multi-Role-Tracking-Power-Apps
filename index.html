@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TATA Motors Multi Role Tracking | GitHub Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Open Sans',sans-serif;background:#F0F2F5;color:#1B2A4A;padding:32px 20px;}
+  .page{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:30px;}
+
+  .header{background:#1B2A4A;border-radius:14px;padding:28px 36px;}
+  .header-title{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:800;color:#F0C040;}
+  .header-sub{font-size:11px;font-weight:600;color:#C9A93A;letter-spacing:2px;text-transform:uppercase;margin-top:5px;}
+  .header-desc{font-size:13px;color:#94A3B8;margin-top:14px;line-height:1.7;max-width:680px;}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+  .badge{padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:0.5px;}
+  .b-purple{background:#7B2FBE;color:#fff;} .b-blue{background:#0078D4;color:#fff;}
+  .b-teal{background:#0B6A7E;color:#fff;} .b-navy{background:#003087;color:#fff;}
+  .b-green{background:#2E7D32;color:#fff;} .b-orange{background:#C44B00;color:#fff;}
+  .b-alm{background:#5B21B6;color:#fff;} .b-red{background:#B00020;color:#fff;}
+
+  .section{display:flex;flex-direction:column;gap:14px;}
+  .section-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#718096;}
+  .section-title{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;color:#1B2A4A;display:flex;align-items:center;gap:8px;}
+
+  .card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;overflow:hidden;}
+  .card-header{padding:13px 20px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #E2E8F0;background:#FAFBFC;}
+  .card-header-icon{font-size:16px;}
+  .card-header-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:#1B2A4A;}
+  .card-header-sub{font-size:10px;color:#718096;margin-left:auto;background:#E8F4FD;padding:2px 9px;border-radius:10px;font-weight:600;}
+  .card-body{padding:18px 20px;display:flex;flex-direction:column;gap:14px;}
+
+  .ss-placeholder{background:#F7F9FC;border:1.5px dashed #CBD5E0;border-radius:10px;padding:34px 16px;text-align:center;color:#A0AEC0;font-size:11px;font-weight:600;letter-spacing:0.5px;}
+  .ss-placeholder-icon{font-size:22px;display:block;margin-bottom:6px;}
+
+  .ss-wrap{background:#F7F9FC;border-radius:10px;border:1px solid #E2E8F0;padding:10px;text-align:center;}
+  .ss-wrap img{max-width:100%;border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,0.10);}
+  .ss-caption{font-size:9px;color:#718096;margin-top:7px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;}
+
+  .privacy-banner{background:#FFF8E1;border:1.5px solid #F6CC6A;border-radius:8px;padding:9px 14px;display:flex;align-items:center;gap:8px;margin-top:6px;}
+  .privacy-banner-icon{font-size:14px;flex-shrink:0;}
+  .privacy-banner-text{font-size:10px;color:#7A5200;font-weight:600;line-height:1.4;}
+
+  .feature-list{display:flex;flex-direction:column;gap:8px;}
+  .feature-item{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#F7F9FC;border-radius:8px;border-left:3px solid #1B2A4A;}
+  .fi-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+  .fi-text{font-size:12px;color:#4A5568;line-height:1.5;}
+  .fi-text strong{color:#1B2A4A;}
+
+  .roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .role-card{background:#F7F9FC;border-radius:10px;border:1px solid #E2E8F0;padding:13px 15px;display:flex;gap:10px;align-items:flex-start;}
+  .role-avatar{width:32px;height:32px;border-radius:50%;background:#EAF2FF;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .role-name{font-size:12px;font-weight:700;color:#1B2A4A;margin-bottom:3px;}
+  .role-desc{font-size:10px;color:#718096;line-height:1.5;}
+
+  .table-list{display:flex;flex-direction:column;gap:8px;}
+  .table-row{display:flex;align-items:center;gap:10px;padding:9px 14px;background:#F7F9FC;border-radius:8px;border:1px solid #E2E8F0;}
+  .table-icon{font-size:14px;flex-shrink:0;}
+  .table-name{font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:700;color:#1B2A4A;}
+  .table-desc{font-size:10px;color:#718096;margin-left:auto;text-align:right;max-width:480px;}
+  .table-tag{font-size:8.5px;font-weight:700;letter-spacing:0.5px;padding:2px 8px;border-radius:10px;background:#E8F4FD;color:#0B6A7E;flex-shrink:0;}
+  .table-tag.core{background:#FFF3E0;color:#C44B00;}
+  .table-tag.user{background:#F3E8FF;color:#5B21B6;}
+
+  .flow-steps{display:flex;gap:6px;align-items:stretch;flex-wrap:wrap;margin-bottom:4px;}
+  .flow-step{background:#F7F9FC;border:1.5px solid #E2E8F0;border-radius:8px;padding:10px 12px;flex:1;min-width:130px;}
+  .flow-step-num{width:18px;height:18px;border-radius:50%;background:#0066FF;color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:4px;}
+  .flow-step-title{font-size:10px;font-weight:700;color:#1B2A4A;margin-bottom:2px;}
+  .flow-step-desc{font-size:9px;color:#718096;line-height:1.4;}
+  .flow-arrow{font-size:14px;color:#CBD5E0;font-weight:700;align-self:center;flex-shrink:0;}
+
+  .screens-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .screen-card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;}
+  .screen-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  .screen-num{display:inline-flex;width:20px;height:20px;border-radius:6px;background:#1B2A4A;color:#F0C040;font-family:'Montserrat',sans-serif;font-size:10px;font-weight:800;align-items:center;justify-content:center;margin-bottom:8px;}
+  .screen-name{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:#1B2A4A;margin-bottom:4px;}
+  .screen-desc{font-size:10px;color:#718096;line-height:1.5;}
+  .screen-mode{margin-top:8px;display:flex;gap:6px;}
+  .mode-pill{font-size:8.5px;font-weight:700;padding:2px 8px;border-radius:10px;}
+  .mode-edit{background:#E8F5E9;color:#2E7D32;}
+  .mode-view{background:#EAF2FF;color:#1A4E8A;}
+
+  .tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .tech-card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+  .tech-icon{font-size:22px;flex-shrink:0;}
+  .tech-name{font-size:12px;font-weight:700;color:#1B2A4A;}
+  .tech-use{font-size:10px;color:#718096;margin-top:2px;line-height:1.4;}
+
+  .impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .impact-card{background:#fff;border:1px solid #E2E8F0;border-radius:10px;padding:16px;text-align:center;}
+  .impact-val{font-family:'Montserrat',sans-serif;font-size:26px;font-weight:800;color:#1B2A4A;}
+  .impact-lbl{font-size:10px;color:#718096;margin-top:4px;line-height:1.4;}
+
+  .stages{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-radius:10px;overflow:hidden;border:1px solid #E2E8F0;}
+  .env-compare{display:grid;grid-template-columns:1fr;gap:14px;}
+  .env-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.5px;padding:3px 10px;border-radius:10px;margin-bottom:8px;}
+  .env-dev{background:#EAF2FF;color:#1A4E8A;} .env-prod{background:#E8F5E9;color:#1B5E20;}
+  .stage{padding:14px 14px;position:relative;}
+  .stage-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;margin-bottom:6px;}
+  .stage-name{font-size:11px;font-weight:700;margin-bottom:3px;}
+  .stage-desc{font-size:9.5px;color:#718096;line-height:1.4;}
+  .s1{background:#EAF2FF;} .s1 .stage-num{background:#2B6CB0;} .s1 .stage-name{color:#1A4E8A;}
+  .s2{background:#FFF8E1;} .s2 .stage-num{background:#A06800;} .s2 .stage-name{color:#7A5200;}
+
+  .author-card{background:#1B2A4A;border-radius:12px;padding:22px 28px;display:flex;align-items:center;gap:16px;}
+  .author-avatar{width:50px;height:50px;border-radius:50%;background:#F0C040;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#1B2A4A;flex-shrink:0;font-family:'Montserrat',sans-serif;}
+  .author-name{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#F0C040;}
+  .author-role{font-size:11px;color:#94A3B8;margin-top:3px;}
+  .author-links{display:flex;gap:8px;margin-top:10px;}
+  .author-link{padding:5px 14px;border-radius:20px;font-size:10px;font-weight:700;text-decoration:none;}
+  .al-li{background:#0A66C2;color:#fff;} .al-gh{background:#fff;color:#1B2A4A;}
+
+  .footer{text-align:center;font-size:10px;color:#A0AEC0;padding-top:8px;}
+  .note-banner{background:#EEF2FF;border:1px solid #A5B4FC;border-radius:10px;padding:12px 16px;display:flex;align-items:center;gap:8px;}
+  .note-banner-icon{font-size:14px;flex-shrink:0;}
+  .note-banner-text{font-size:10px;color:#3730A3;font-weight:600;line-height:1.5;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-title">🏭 TATA Motors — Multi Role Tracking</div>
+    <div class="header-sub">Independent Practice Project · Microsoft Power Platform</div>
+    <div class="header-desc">A Power Apps Canvas application built on 8 Dataverse tables to digitize role-based operational tracking across a vehicle manufacturing floor — from Procurement and Assembly to Production, Testing/Inspection, Warehouse and Showroom — with dynamic, lookup-driven Edit/View access control per logged-in user.</div>
+    <div class="badges">
+      <span class="badge b-purple">Power Apps Canvas App</span>
+      <span class="badge b-blue">Microsoft Dataverse</span>
+      <span class="badge b-navy">Role-Based Access Control</span>
+      <span class="badge b-teal">Lookup-Driven Form Modes</span>
+      <span class="badge b-alm">Solutions</span>
+      <span class="badge b-alm">Environment Variables</span>
+      <span class="badge b-alm">ALM · DEV → PROD</span>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="privacy-banner" style="margin-top:0;background:#EEF2FF;border-color:#A5B4FC;">
+    <div class="privacy-banner-icon">ℹ️</div>
+    <div class="privacy-banner-text" style="color:#3730A3;">
+      This is an independent, self-initiated learning project built to practice Power Apps and Dataverse. "TATA Motors" is used only as a fictional scenario name for a manufacturing-tracking use case; this project is not affiliated with, built for, or endorsed by Tata Motors Limited. All data shown (names, emails, records) is synthetic sample data.
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="section">
+    <div class="section-label">Why This Was Built</div>
+    <div class="section-title">🎯 Problem Statement</div>
+    <div class="feature-list">
+      <div class="feature-item"><div class="fi-icon">❌</div><div class="fi-text"><strong>Siloed tracking:</strong> Each function — Procurement, Assembly, Production, Testing, Warehouse, Showroom — tracked its own status manually, with no single source of truth</div></div>
+      <div class="feature-item"><div class="fi-icon">❌</div><div class="fi-text"><strong>No access control:</strong> Anyone with the file/sheet could edit any section, regardless of their actual role or responsibility</div></div>
+      <div class="feature-item"><div class="fi-icon">❌</div><div class="fi-text"><strong>No accountability:</strong> No way to tie a specific update to the specific manager or supervisor responsible for that stage</div></div>
+      <div class="feature-item"><div class="fi-icon">❌</div><div class="fi-text"><strong>No unified view:</strong> Leadership had no consolidated, real-time picture of where a unit stood across the full production lifecycle</div></div>
+    </div>
+  </div>
+
+  <!-- ROLES -->
+  <div class="section">
+    <div class="section-label">Who Uses It</div>
+    <div class="section-title">👥 Roles Tracked</div>
+    <div class="roles-grid">
+      <div class="role-card"><div class="role-avatar">🛒</div><div><div class="role-name">Procurement Manager</div><div class="role-desc">Tracks material and component procurement status</div></div></div>
+      <div class="role-card"><div class="role-avatar">🔧</div><div><div class="role-name">Assembly Manager</div><div class="role-desc">Tracks assembly line progress for the unit</div></div></div>
+      <div class="role-card"><div class="role-avatar">🏭</div><div><div class="role-name">Production Manager</div><div class="role-desc">Owns overall production tracking and drives access control for all other role screens</div></div></div>
+      <div class="role-card"><div class="role-avatar">👷</div><div><div class="role-name">Production Supervisor</div><div class="role-desc">Tracks shop-floor supervision details for production</div></div></div>
+      <div class="role-card"><div class="role-avatar">🧪</div><div><div class="role-name">Tester / Inspection Manager</div><div class="role-desc">Tracks quality testing and inspection checkpoints</div></div></div>
+      <div class="role-card"><div class="role-avatar">📦</div><div><div class="role-name">Warehouse Manager</div><div class="role-desc">Tracks inventory and warehousing status of the unit</div></div></div>
+      <div class="role-card"><div class="role-avatar">🏬</div><div><div class="role-name">Showroom Manager</div><div class="role-desc">Tracks showroom-readiness and dispatch status</div></div></div>
+      <div class="role-card"><div class="role-avatar">🔑</div><div><div class="role-name">User (Admin table)</div><div class="role-desc">Master list of users — User Name and User Email — used to identify the logged-in user across the app</div></div></div>
+    </div>
+  </div>
+
+  <!-- DATA MODEL -->
+  <div class="section">
+    <div class="section-label">Data Backend</div>
+    <div class="section-title">🗂️ Dataverse Tables (8)</div>
+    <div class="table-list">
+      <div class="table-row"><span class="table-icon">🏭</span><span class="table-name">Tbl_Production_Manager_Section</span><span class="table-tag core">Core / Access Control</span><span class="table-desc">Holds lookup columns to the User table for each role; drives Edit/View mode on all 7 screens</span></div>
+      <div class="table-row"><span class="table-icon">🏬</span><span class="table-name">Tbl_Showroom_Manager_Section</span><span class="table-tag">Screen 1</span><span class="table-desc">Showroom readiness / dispatch tracking data</span></div>
+      <div class="table-row"><span class="table-icon">🔧</span><span class="table-name">Tbl_Assembly_Manager_Section</span><span class="table-tag">Screen 2</span><span class="table-desc">Assembly line tracking data</span></div>
+      <div class="table-row"><span class="table-icon">🛒</span><span class="table-name">Tbl_Procurement_Manager_Section</span><span class="table-tag">Screen 3</span><span class="table-desc">Procurement tracking data</span></div>
+      <div class="table-row"><span class="table-icon">👷</span><span class="table-name">Tbl_Production_Supervisor_Section</span><span class="table-tag">Screen 4</span><span class="table-desc">Production supervision tracking data</span></div>
+      <div class="table-row"><span class="table-icon">🧪</span><span class="table-name">Tbl_Tester_Inspection_Manager_Section</span><span class="table-tag">Screen 5</span><span class="table-desc">Testing and inspection tracking data</span></div>
+      <div class="table-row"><span class="table-icon">📦</span><span class="table-name">Tbl_Warehouse_Manager_Section</span><span class="table-tag">Screen 6</span><span class="table-desc">Warehouse and inventory tracking data</span></div>
+      <div class="table-row"><span class="table-icon">🔑</span><span class="table-name">User</span><span class="table-tag user">Reference</span><span class="table-desc">Columns: User Name, User Email — referenced by lookups across the solution</span></div>
+    </div>
+  </div>
+
+  <!-- ACCESS CONTROL LOGIC -->
+  <div class="section">
+    <div class="section-label">Core Design Pattern</div>
+    <div class="section-title">🔐 Lookup-Driven Edit / View Access Control</div>
+    <div class="card">
+      <div class="card-header"><div class="card-header-icon">⚙️</div><div class="card-header-title">How a screen decides Edit vs View for the logged-in user</div><div class="card-header-sub">Power Apps · Dataverse</div></div>
+      <div class="card-body">
+        <div class="flow-steps">
+          <div class="flow-step"><div class="flow-step-num">1</div><div class="flow-step-title">Capture logged-in user</div><div class="flow-step-desc">User().Email is matched against the User table (User Email → User Name) via LookUp()</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">2</div><div class="flow-step-title">Set role flags</div><div class="flow-step-desc">Set(IsProductionManager, ...) and Set(IsProductionSupervisor, ...) compare that User Name against the role lookup columns in Tbl_Production_Manager_Sections, using Lower(Trim()) on both sides for a clean match</div></div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step"><div class="flow-step-num">3</div><div class="flow-step-title">DisplayMode set</div><div class="flow-step-desc">Each screen's Edit form DisplayMode reads its own flag (e.g. If(IsProductionManager, Edit, View)); every other role's section stays View-only</div></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/01-production-manager-table.png" alt="Tbl_Production_Manager_Section columns and data">
+          <div class="ss-caption">Tbl_Production_Manager_Section — lookup columns to the User table for each role, plus PM Strategic Remarks</div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/02-powerfx-role-flags.png" alt="Power Fx formula assigning role based on logged-in user email">
+          <div class="ss-caption">Power Fx — matching the logged-in user's email against the role lookup to set IsProductionManager / IsProductionSupervisor flags</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREENS -->
+  <div class="section">
+    <div class="section-label">Canvas App</div>
+    <div class="section-title">📱 7 Role-Based Screens</div>
+    <div class="screens-grid">
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">1</div>
+            <div class="screen-name">Scr_Production_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Production_Manager_Section — the access-control anchor screen</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/03-screen-production-manager.png" alt="Production Manager Section — role assignments, target production date, plant location and PM strategic remarks">
+          <div class="ss-caption">Production Manager Section — role assignments, target production date, plant location and PM strategic remarks</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">2</div>
+            <div class="screen-name">Scr_Showroom_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Showroom_Manager_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/04-screen-showroom-manager.png" alt="Showroom Manager Section — showroom code, address, customer details, car model and variant">
+          <div class="ss-caption">Showroom Manager Section — showroom code, address, customer details, car model and variant</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">3</div>
+            <div class="screen-name">Scr_Assembly_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Assembly_Manager_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/05-screen-assembly-manager.png" alt="Assembly Manager Section — body shop, paint shop, trim & chassis and final line assembly status">
+          <div class="ss-caption">Assembly Manager Section — body shop, paint shop, trim & chassis and final line assembly status</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">4</div>
+            <div class="screen-name">Scr_Procurement_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Procurement_Manager_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/06-screen-procurement-manager.png" alt="Procurement Manager Section — vendor, purchase order, expected part ETA and procurement status">
+          <div class="ss-caption">Procurement Manager Section — vendor, purchase order, expected part ETA and procurement status</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">5</div>
+            <div class="screen-name">Scr_Production_Supervisor</div>
+            <div class="screen-desc">Bound to Tbl_Production_Supervisor_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/07-screen-production-supervisor.png" alt="Production Supervisor Section — assembly shift, production bay, completion date and supervisor status">
+          <div class="ss-caption">Production Supervisor Section — assembly shift, production bay, completion date and supervisor status</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">6</div>
+            <div class="screen-name">Scr_Tester_Inspection_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Tester_Inspection_Manager_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/08-screen-tester-inspection-manager.png" alt="Tester Inspection Manager Section — PDI status, road test result, defect count and clearance notes">
+          <div class="ss-caption">Tester Inspection Manager Section — PDI status, road test result, defect count and clearance notes</div>
+        </div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-card-top">
+          <div>
+            <div class="screen-num">7</div>
+            <div class="screen-name">Scr_Warehouse_Manager</div>
+            <div class="screen-desc">Bound to Tbl_Warehouse_Manager_Section</div>
+          </div>
+          <div class="screen-mode"><span class="mode-pill mode-edit">Edit for match</span><span class="mode-pill mode-view">View otherwise</span></div>
+        </div>
+        <div class="ss-wrap">
+          <img src="screenshots/09-screen-warehouse-manager.png" alt="Warehouse Manager Section — chassis/engine numbers, parts stock availability and dispatch status">
+          <div class="ss-caption">Warehouse Manager Section — chassis/engine numbers, parts stock availability and dispatch status</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALM JOURNEY -->
+  <div class="section">
+    <div class="section-label">Deployment Journey</div>
+    <div class="section-title">🚀 ALM — DEV → PROD</div>
+    <div class="stages">
+      <div class="stage s1"><div class="stage-num">1</div><div class="stage-name">Built in DEV</div><div class="stage-desc">Canvas app + 8 Dataverse tables added to a solution in the DEV environment; connection references and environment variables enabled from app settings</div></div>
+      <div class="stage s2"><div class="stage-num">2</div><div class="stage-name">Exported & Imported to PROD</div><div class="stage-desc">Solution exported as Managed and imported into a PROD environment; Dataverse database provisioned, connection references re-bound, and data migrated</div></div>
+    </div>
+    <div class="env-compare">
+      <div class="ss-wrap">
+        <span class="env-tag env-dev">DEV — Test 99's Environment</span>
+        <img src="screenshots/10-alm-dev-solution.png" alt="Solution objects in DEV environment">
+        <div class="ss-caption">TATA Motors Multi-Role Tracking solution in DEV — unmanaged, 9 objects (Canvas App + 8 tables)</div>
+      </div>
+      <div class="ss-wrap">
+        <span class="env-tag env-prod">PROD — Test99-PROD-Trial</span>
+        <img src="screenshots/11-alm-prod-managed-solution.png" alt="Solution objects in PROD-Trial environment">
+        <div class="ss-caption">Same solution imported into PROD-Trial as Managed — objects locked from direct edits</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="section">
+    <div class="section-label">Built With</div>
+    <div class="section-title">🛠️ Technology Stack</div>
+    <div class="tech-grid">
+      <div class="tech-card"><div class="tech-icon">📱</div><div><div class="tech-name">Power Apps — Canvas App</div><div class="tech-use">7 role-based screens with dynamic Edit/View form control</div></div></div>
+      <div class="tech-card"><div class="tech-icon">🗄️</div><div><div class="tech-name">Microsoft Dataverse</div><div class="tech-use">8 tables — 7 role-section tables plus a master User reference table</div></div></div>
+      <div class="tech-card"><div class="tech-icon">🧩</div><div><div class="tech-name">Solutions</div><div class="tech-use">Canvas app and all Dataverse tables packaged for DEV → PROD ALM</div></div></div>
+      <div class="tech-card"><div class="tech-icon">⚙️</div><div><div class="tech-name">Environment Variables & Connection References</div><div class="tech-use">Used to make the Dataverse data source portable across environments</div></div></div>
+    </div>
+  </div>
+
+  <!-- IMPACT -->
+  <div class="section">
+    <div class="section-label">What Was Achieved</div>
+    <div class="section-title">📈 Business Impact</div>
+    <div class="impact-grid">
+      <div class="impact-card"><div class="impact-val">8</div><div class="impact-lbl">Dataverse tables modeling the end-to-end vehicle production lifecycle</div></div>
+      <div class="impact-card"><div class="impact-val">7</div><div class="impact-lbl">Role-based Canvas App screens, each with its own edit/view control</div></div>
+      <div class="impact-card"><div class="impact-val">1</div><div class="impact-lbl">Single source of truth replacing siloed, manual role-wise tracking</div></div>
+      <div class="impact-card"><div class="impact-val">100%</div><div class="impact-lbl">Role-based access enforced automatically via lookup match, no manual permission setup per user</div></div>
+      <div class="impact-card"><div class="impact-val">0</div><div class="impact-lbl">Cross-role editing — each manager sees other sections as read-only</div></div>
+      <div class="impact-card"><div class="impact-val">DEV→PROD</div><div class="impact-lbl">Full ALM lifecycle completed using Solutions and Managed deployment</div></div>
+    </div>
+  </div>
+
+  <!-- AUTHOR -->
+  <div class="section">
+    <div class="section-label">Built By</div>
+    <div class="author-card">
+      <div class="author-avatar">JP</div>
+      <div>
+        <div class="author-name">Javed Pinjari</div>
+        <div class="author-role">Power Platform Developer · Microsoft Power Apps & Dataverse</div>
+        <div class="author-links">
+          <a class="author-link al-li" href="https://www.linkedin.com/in/javed-pinjari-0a176582/">🔗 LinkedIn</a>
+          <a class="author-link al-gh" href="https://github.com/javedmcs83-ali">🐙 GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">TATA Motors — Multi Role Tracking &nbsp;·&nbsp; Built on Microsoft Power Platform &nbsp;·&nbsp; 2026</div>
+
+</div>
+</body>
+</html>
