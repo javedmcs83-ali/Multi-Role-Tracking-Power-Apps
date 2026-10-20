@@ -4,7 +4,7 @@ A **Power Apps Canvas app on 8 Dataverse tables** that digitizes role-based oper
 
 ![Power Apps](https://img.shields.io/badge/Power%20Apps-Canvas-742774) ![Dataverse](https://img.shields.io/badge/Microsoft-Dataverse-0078D4) ![RBAC](https://img.shields.io/badge/Role--Based-Access%20Control-0B6A7E) ![ALM](https://img.shields.io/badge/ALM-DEV%20to%20PROD-5B21B6)
 
-> 🔗 **Live project page:** https://javedmcs83-ali.github.io/REPO-NAME/ *(replace `REPO-NAME` after enabling GitHub Pages)*
+> 🔗 **Live project page:** https://javedmcs83-ali.github.io/Multi-Role-Tracking-Power-Apps/
 
 > ℹ️ Independent learning project. "TATA Motors" is only a fictional scenario name; this project is not affiliated with, built for, or endorsed by Tata Motors Limited. All data is synthetic.
 
